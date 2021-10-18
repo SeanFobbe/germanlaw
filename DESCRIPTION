@@ -1,0 +1,14 @@
+Package: germanlaw
+Title: Tools for Analyzing German Legal Data
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Seán",
+           family = "Fobbe",
+           role = c("aut", "cre"),
+           email = "fobbe-data@posteo.de")
+Description: Provides a range of tools to work with legal data of the Federal Republic of Germany, particularly textual legal data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
