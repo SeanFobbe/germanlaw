@@ -33,7 +33,7 @@ download_laws <- function(filetype = "xml"){
 
     ## Define Name of Target Directory
     dir <- paste0("Gesetze-im-Internet_",
-                       Sys.Date())
+                  Sys.Date())
 
     ## Create Target Directory
     dir.create(dir)
@@ -50,9 +50,9 @@ download_laws <- function(filetype = "xml"){
         
         ## Download XML Files
         download.result.xml <- future.apply::future_lapply(X = links.xml,
-                                              FUN = download_xml,
-                                              dir = dir
-                                              )
+                                                           FUN = download_xml,
+                                                           dir = dir
+                                                           )
 
         message(paste(sum(unlist(download.result.xml) == 0),
                       "of",
@@ -102,8 +102,8 @@ download_laws <- function(filetype = "xml"){
         ## Move Attachments
 
         files.attachments <- list.files(dir,
-                                pattern = "\\.jpg|\\.gif|\\.png",
-                                full.names = TRUE)
+                                        pattern = "\\.jpg|\\.gif|\\.png",
+                                        full.names = TRUE)
 
         invisible(file.rename(files.attachments,
                               file.path(dir,
