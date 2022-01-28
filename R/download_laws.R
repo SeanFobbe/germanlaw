@@ -23,7 +23,7 @@ download_xml <- function(x,
 
 download_laws <- function(filetype = "xml"){
 
-    ## Extract Links from XML Table of Contents
+    ## Extract Links to ZIP Archives from XML Table of Contents
     XML <- xml2::read_xml("https://www.gesetze-im-internet.de/gii-toc.xml")
 
     links <- rvest::html_elements(XML,
@@ -35,10 +35,10 @@ download_laws <- function(filetype = "xml"){
     download.date <- Sys.Date()
 
     ## Set Filepath and Create Dir
-    filepath <- paste0(Sys.Date(),
-                       "_gesetze-im-internet")
+    dir <- paste0("Gesetze-im-Internet_XML_",
+                       Sys.Date())
     
-    dir.create(filepath)
+    dir.create(dir)
 
 
     if ((filetype == "all") || (filetype == "xml")){
