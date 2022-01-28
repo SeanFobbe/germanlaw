@@ -47,51 +47,51 @@ download_laws <- function(filetype = "xml"){
         invisible(future.apply::future_lapply(links.xml,
                                               download_xml,
                                               download.date = download.date,
-                                              filepath = filepath))
+                                              filepath = dir))
 
 
         ## Unzip XML
-        files.zip <- list.files(filepath,
+        files.zip <- list.files(dir,
                                 pattern = "\\.zip",
                                 full.names = TRUE)
         
         lapply(files.zip,
                unzip,
-               exdir = filepath)
+               exdir = dir)
 
 
         
         ## Move ZIP Files
-        dir.create(paste0(filepath, "/xml_zip"))
+        dir.create(paste0(dir, "/xml_zip"))
 
         invisible(file.rename(files.zip,
-                    paste0(filepath, "/xml_zip/", basename(files.zip))))
+                    paste0(dir, "/xml_zip/", basename(files.zip))))
 
 
         
         ## Move XML Files
 
-        dir.create(paste0(filepath, "/xml"))
+        dir.create(paste0(dir, "/xml"))
         
-        files.xml <- list.files(filepath,
+        files.xml <- list.files(dir,
                                 pattern = "\\.xml",
                                 full.names = TRUE)
 
         invisible(file.rename(files.xml,
-                              paste0(filepath, "/xml/", basename(files.xml))))
+                              paste0(dir, "/xml/", basename(files.xml))))
 
 
         
         ## Move Attachments
 
-        dir.create(paste0(filepath, "/attachments"))
+        dir.create(paste0(dir, "/attachments"))
         
-        files.attachments <- list.files(filepath,
+        files.attachments <- list.files(dir,
                                 pattern = "\\.jpg|\\.gif|\\.png",
                                 full.names = TRUE)
 
         invisible(file.rename(files.attachments,
-                              paste0(filepath, "/attachments/", basename(files.attachments))))
+                              paste0(dir, "/attachments/", basename(files.attachments))))
         
     }
 
