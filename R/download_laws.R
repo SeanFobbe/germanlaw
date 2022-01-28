@@ -47,7 +47,7 @@ download_laws <- function(filetype = "xml"){
                                               dir = dir
                                               )
 
-        message(paste(base::sum(unlist(download.result.xml) == 0),
+        message(paste(base::sum(base::unlist(download.result.xml) == 0),
                       "of",
                       base::length(links.xml),
                       "XML files successfully downloaded."))
