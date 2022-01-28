@@ -43,8 +43,8 @@ download_laws <- function(filetype = "xml"){
 
         ## Create Folders
         dir.create(paste0(dir, "/xml_zip"))
-        dir.create(paste0(dir, "/xml"))
-        dir.create(paste0(dir, "/attachments"))
+        dir.create(paste0(dir, "/xml_text"))
+        dir.create(paste0(dir, "/xml_attachments"))
 
 
         
@@ -91,7 +91,7 @@ download_laws <- function(filetype = "xml"){
 
         invisible(file.rename(files.xml,
                               file.path(dir,
-                                        "xml",
+                                        "xml_text",
                                         basename(files.xml)
                                         )
                               )
@@ -107,7 +107,7 @@ download_laws <- function(filetype = "xml"){
 
         invisible(file.rename(files.attachments,
                               file.path(dir,
-                                        "attachments",
+                                        "xml_attachments",
                                         basename(files.attachments)
                                         )
                               )
