@@ -101,14 +101,17 @@ download_laws <- function(filetype = "xml"){
         
         ## Move Attachments
 
-
-        
         files.attachments <- list.files(dir,
                                 pattern = "\\.jpg|\\.gif|\\.png",
                                 full.names = TRUE)
 
         invisible(file.rename(files.attachments,
-                              paste0(dir, "/attachments/", basename(files.attachments))))
+                              file.path(dir,
+                                        "attachments",
+                                        basename(files.attachments)
+                                        )
+                              )
+                  )
         
     }
 
