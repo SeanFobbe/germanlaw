@@ -130,6 +130,39 @@ download_laws <- function(filetype = "xml"){
         
     }
 
+    if ((filetype == "all") || (filetype == "pdf") || (filetype == "epub")){
+
+        links.html <- gsub("/xml.zip",
+                   "/index.html",
+                   links.xml)
+
+        links.list <- future_lapply(links.html,
+                            f.linkextract)
+
+
+        links.raw <- unlist(links.list)
+
+        filenames.pdf <- grep (".pdf$",
+                       links.raw,
+                       ignore.case = TRUE,
+                       value = TRUE)
+
+        filenames.epub <- grep (".epub$",
+                                links.raw,
+                                ignore.case = TRUE,
+                                value = TRUE)
+
+        }
+    
+
+    if ((filetype == "all") || (filetype == "pdf")){
+
+    }
+
+    if ((filetype == "all") || (filetype == "epub")){
+
+    }
+
     
 }
 
