@@ -54,9 +54,9 @@ download_laws <- function(filetype = "xml"){
 
 
         ## Unzip XML
-        files.zip <- list.files(dir,
-                                pattern = "\\.zip",
-                                full.names = TRUE)
+        files.zip <- base::list.files(dir,
+                                      pattern = "\\.zip",
+                                      full.names = TRUE)
         
         base::lapply(files.zip,
                      zip::unzip,
@@ -65,10 +65,12 @@ download_laws <- function(filetype = "xml"){
 
         
         ## Move ZIP Files
-        dir.create(paste0(dir, "/xml_zip"))
+        base::dir.create(base::paste0(dir, "/xml_zip"))
 
-        invisible(file.rename(files.zip,
-                    paste0(dir, "/xml_zip/", basename(files.zip))))
+        base::invisible(base::file.rename(files.zip,
+                                          base::paste0(dir,
+                                                       "/xml_zip/",
+                                                       base::basename(files.zip))))
 
 
         
