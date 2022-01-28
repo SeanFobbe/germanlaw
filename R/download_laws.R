@@ -47,8 +47,9 @@ download_laws <- function(filetype = "xml"){
         dir.create(paste0(dir, "/xml_attachments"))
 
         ## Download DTD
-        download.file("https://www.gesetze-im-internet.de/dtd/1.01/gii-norm.dtd",
-                      paste0("GII_XML_Document-Type-Definition_v1-01.dtd"))
+        download.file(URL = "https://www.gesetze-im-internet.de/dtd/1.01/gii-norm.dtd",
+                      destile = file.path(dir,
+                                          "GII_XML_Document-Type-Definition_v1-01.dtd"))
         
         ## Download XML Files
         download.result.xml <- future.apply::future_lapply(X = links.xml,
@@ -68,8 +69,8 @@ download_laws <- function(filetype = "xml"){
                                 pattern = "\\.zip",
                                 full.names = TRUE)
         
-        invisible(lapply(files.zip,
-                         zip::unzip,
+        invisible(lapply(X = files.zip,
+                         FUN = zip::unzip,
                          exdir = dir))
         
 
