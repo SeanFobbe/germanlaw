@@ -37,16 +37,25 @@ download_laws <- function(filetype = "xml"){
                   Sys.Date())
 
     ## Create Target Directory
-    dir.create(dir)
+    invisible(dir.create(dir))
 
 
     if ((filetype == "all") || (filetype == "xml")){
 
-        ## Create Folders
-        dir.create(paste0(dir, "/xml_zip"))
-        dir.create(paste0(dir, "/xml_text"))
-        dir.create(paste0(dir, "/xml_attachments"))
+        ## Define Folders
+        dir.xml <- c("xml_zip",
+                     "xml_text",
+                     "xml_attachments")
 
+        ## Delete Old Folders from Previous Runs
+        lapply(dir.xml,
+               unlink)
+
+        ## Create Folders
+        lapply(dir.xml,
+               dir.create)
+
+        
         ## Download DTD
         download.file(url = "https://www.gesetze-im-internet.de/dtd/1.01/gii-norm.dtd",
                       destfile = file.path(dir,
