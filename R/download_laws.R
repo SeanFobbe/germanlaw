@@ -9,10 +9,11 @@ download_xml <- function(x,
                            "\\1\\.zip",
                            x)
 
-    destination <- file.path(dir, filename)
+    destination <- file.path(dir,
+                             filename)
     
-    utils::download.file(x,
-                         destination)
+    utils::download.file(url = x,
+                         destfile = destination)
     
 }
 
