@@ -23,11 +23,8 @@ download_xml <- function(x,
 
 download_laws <- function(filetype = "xml"){
 
-    ## Define XML Table of Contents
-    URL <- "https://www.gesetze-im-internet.de/gii-toc.xml"
-
     ## Extract Links from XML Table of Contents
-    XML <- xml2::read_xml(URL)
+    XML <- xml2::read_xml("https://www.gesetze-im-internet.de/gii-toc.xml")
 
     links <- rvest::html_elements(XML,
                                   "link")
