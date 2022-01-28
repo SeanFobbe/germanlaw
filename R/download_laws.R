@@ -122,7 +122,3 @@ download_laws <- function(filetype = "xml"){
     
 }
 
-
-
-
-x <- "http://www.gesetze-im-internet.de/begdv_3/xml.zip"
