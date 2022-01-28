@@ -119,7 +119,8 @@ download_laws <- function(filetype = "xml"){
         ## Store Attachments
 
         files.attachments <- list.files(dir,
-                                        pattern = "\\.jpg|\\.gif|\\.png",
+                                        pattern = "\\.jpg|\\.gif|\\.png|\\.pdf",
+                                        ignore.case = TRUE,
                                         full.names = TRUE)
 
         invisible(file.rename(files.attachments,
