@@ -42,11 +42,13 @@ download_laws <- function(filetype = "xml"){
     if ((filetype == "all") || (filetype == "xml")){
         
         ## Download XML Files
-        invisible(future.apply::future_lapply(X = links.xml,
+        download.result.xml <- future.apply::future_lapply(X = links.xml,
                                               FUN = download_xml,
                                               dir = dir
                                               )
-                  )
+
+        message(paste(base::sum(unlist(download.result.xml) == 0),
+                      "of", length(links.xml), "XML files successfully downloaded."))
 
 
         ## Unzip XML
