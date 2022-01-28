@@ -5,9 +5,9 @@
 download_xml <- function(x,
                          dir){
 
-    filename <- gsub("http://www.gesetze-im-internet.de/(.*)/xml\\.zip",
-                           "\\1\\.zip",
-                           x)
+    filename <- gsub(pattern = "http://www.gesetze-im-internet.de/(.*)/xml\\.zip",
+                     replacement = "\\1\\.zip",
+                     x = x)
 
     destination <- file.path(dir,
                              filename)
