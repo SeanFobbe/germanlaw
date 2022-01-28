@@ -54,6 +54,7 @@ download_laws <- function(filetype = "xml"){
                                                            dir = dir
                                                            )
 
+        ## Return Download Success
         message(paste(sum(unlist(download.result.xml) == 0),
                       "of",
                       length(links.xml),
@@ -71,7 +72,7 @@ download_laws <- function(filetype = "xml"){
         
 
         
-        ## Move ZIP Files
+        ## Store ZIP Files
 
         invisible(file.rename(files.zip,
                               file.path(dir,
@@ -83,7 +84,7 @@ download_laws <- function(filetype = "xml"){
 
 
         
-        ## Move XML Files
+        ## Store XML Files
 
         files.xml <- list.files(dir,
                                 pattern = "\\.xml",
@@ -99,7 +100,7 @@ download_laws <- function(filetype = "xml"){
 
 
         
-        ## Move Attachments
+        ## Store Attachments
 
         files.attachments <- list.files(dir,
                                         pattern = "\\.jpg|\\.gif|\\.png",
