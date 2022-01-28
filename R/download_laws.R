@@ -48,7 +48,7 @@ download_laws <- function(filetype = "xml"){
 
         ## Download DTD
         download.file(URL = "https://www.gesetze-im-internet.de/dtd/1.01/gii-norm.dtd",
-                      destile = file.path(dir,
+                      destfile = file.path(dir,
                                           "GII_XML_Document-Type-Definition_v1-01.dtd"))
         
         ## Download XML Files
