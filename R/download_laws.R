@@ -3,16 +3,13 @@
 
 
 download_xml <- function(x,
-                         download.date,
-                         filepath){
+                         dir){
 
     filename <- gsub("http://www.gesetze-im-internet.de/(.*)/xml\\.zip",
                      "\\1\\.zip",
                      x)
 
-    destination <- paste0(filepath,
-                          "/",
-                          filename)
+    destination <- file.path(dir, filename)
     
     download.file(x,
                   destination)
@@ -34,20 +31,22 @@ download_laws <- function(filetype = "xml"){
     ## Define Download Date
     download.date <- Sys.Date()
 
-    ## Set Filepath and Create Dir
-    dir <- paste0("Gesetze-im-Internet_XML_",
+    ## Define Name of Target Directory
+    dir <- paste0("Gesetze-im-Internet_",
                        Sys.Date())
-    
+
+    ## Create Target Directory
     dir.create(dir)
 
 
     if ((filetype == "all") || (filetype == "xml")){
         
         ## Download XML Files
-        invisible(future.apply::future_lapply(links.xml,
-                                              download_xml,
-                                              download.date = download.date,
-                                              filepath = dir))
+        invisible(future.apply::future_lapply(X = links.xml
+                                              FUN = download.file,
+                                              dir = dir
+                                              )
+                  )
 
 
         ## Unzip XML
