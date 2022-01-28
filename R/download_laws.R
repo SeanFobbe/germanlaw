@@ -43,17 +43,18 @@ download_laws <- function(filetype = "xml"){
     if ((filetype == "all") || (filetype == "xml")){
 
         ## Define Folders
-        dir.xml <- c("xml_zip",
-                     "xml_text",
-                     "xml_attachments")
+        dir.xml <- file.path(dir,
+                             c("xml_zip",
+                               "xml_text",
+                               "xml_attachments"))
 
         ## Delete Old Folders from Previous Runs
-        lapply(dir.xml,
-               unlink)
+        unlink(dir.xml,
+               recursive = TRUE)
 
         ## Create Folders
-        lapply(dir.xml,
-               dir.create)
+        invisible(lapply(dir.xml,
+                         dir.create))
 
         
         ## Download DTD
