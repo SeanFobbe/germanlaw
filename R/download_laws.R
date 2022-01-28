@@ -5,11 +5,11 @@
 download_xml <- function(x,
                          dir){
 
-    filename <- base::gsub("http://www.gesetze-im-internet.de/(.*)/xml\\.zip",
+    filename <- gsub("http://www.gesetze-im-internet.de/(.*)/xml\\.zip",
                            "\\1\\.zip",
                            x)
 
-    destination <- base::file.path(dir, filename)
+    destination <- file.path(dir, filename)
     
     utils::download.file(x,
                          destination)
@@ -29,17 +29,24 @@ download_laws <- function(filetype = "xml"){
     links.xml <- xml2::xml_text(links)
 
     ## Define Download Date
-    download.date <- base::Sys.Date()
+    download.date <- Sys.Date()
 
     ## Define Name of Target Directory
-    dir <- base::paste0("Gesetze-im-Internet_",
-                       base::Sys.Date())
+    dir <- paste0("Gesetze-im-Internet_",
+                       Sys.Date())
 
     ## Create Target Directory
-    base::dir.create(dir)
+    dir.create(dir)
 
 
     if ((filetype == "all") || (filetype == "xml")){
+
+        ## Create Folders
+        dir.create(paste0(dir, "/xml_zip"))
+        dir.create(paste0(dir, "/xml"))
+        dir.create(paste0(dir, "/attachments"))
+
+
         
         ## Download XML Files
         download.result.xml <- future.apply::future_lapply(X = links.xml,
@@ -47,36 +54,35 @@ download_laws <- function(filetype = "xml"){
                                               dir = dir
                                               )
 
-        message(paste(base::sum(base::unlist(download.result.xml) == 0),
+        message(paste(sum(unlist(download.result.xml) == 0),
                       "of",
-                      base::length(links.xml),
+                      length(links.xml),
                       "XML files successfully downloaded."))
 
 
         ## Unzip XML
-        files.zip <- base::list.files(dir,
-                                      pattern = "\\.zip",
-                                      full.names = TRUE)
+        files.zip <- list.files(dir,
+                                pattern = "\\.zip",
+                                full.names = TRUE)
         
-        base::lapply(files.zip,
-                     zip::unzip,
-                     exdir = dir)
+        invisible(lapply(files.zip,
+                         zip::unzip,
+                         exdir = dir))
         
 
         
         ## Move ZIP Files
-        base::dir.create(base::paste0(dir, "/xml_zip"))
 
-        base::invisible(base::file.rename(files.zip,
-                                          base::paste0(dir,
-                                                       "/xml_zip/",
-                                                       base::basename(files.zip))))
+        invisible(file.rename(files.zip,
+                              paste0(dir,
+                                     "/xml_zip/",
+                                     basename(files.zip))))
 
 
         
         ## Move XML Files
 
-        dir.create(paste0(dir, "/xml"))
+
         
         files.xml <- list.files(dir,
                                 pattern = "\\.xml",
@@ -89,7 +95,7 @@ download_laws <- function(filetype = "xml"){
         
         ## Move Attachments
 
-        dir.create(paste0(dir, "/attachments"))
+
         
         files.attachments <- list.files(dir,
                                 pattern = "\\.jpg|\\.gif|\\.png",
