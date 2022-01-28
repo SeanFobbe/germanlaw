@@ -42,7 +42,7 @@ download_laws <- function(filetype = "xml"){
     if ((filetype == "all") || (filetype == "xml")){
         
         ## Download XML Files
-        invisible(future.apply::future_lapply(X = links.xml
+        invisible(future.apply::future_lapply(X = links.xml,
                                               FUN = download_xml,
                                               dir = dir
                                               )
