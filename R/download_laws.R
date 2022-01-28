@@ -74,22 +74,28 @@ download_laws <- function(filetype = "xml"){
         ## Move ZIP Files
 
         invisible(file.rename(files.zip,
-                              paste0(dir,
-                                     "/xml_zip/",
-                                     basename(files.zip))))
+                              file.path(dir,
+                                        "xml_zip",
+                                        basename(files.zip)
+                                        )
+                              )
+                  )
 
 
         
         ## Move XML Files
 
-
-        
         files.xml <- list.files(dir,
                                 pattern = "\\.xml",
                                 full.names = TRUE)
 
         invisible(file.rename(files.xml,
-                              paste0(dir, "/xml/", basename(files.xml))))
+                              file.path(dir,
+                                        "xml",
+                                        basename(files.xml)
+                                        )
+                              )
+                  )
 
 
         
