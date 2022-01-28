@@ -56,10 +56,10 @@ download_laws <- function(filetype = "xml"){
                                 pattern = "\\.zip",
                                 full.names = TRUE)
         
-        lapply(files.zip,
-               unzip,
-               exdir = dir)
-
+        base::lapply(files.zip,
+                     zip::unzip,
+                     exdir = dir)
+        
 
         
         ## Move ZIP Files
