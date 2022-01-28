@@ -47,7 +47,7 @@ download_laws <- function(filetype = "xml"){
         dir.create(paste0(dir, "/xml_attachments"))
 
         ## Download DTD
-        download.file(URL = "https://www.gesetze-im-internet.de/dtd/1.01/gii-norm.dtd",
+        download.file(url = "https://www.gesetze-im-internet.de/dtd/1.01/gii-norm.dtd",
                       destfile = file.path(dir,
                                           "GII_XML_Document-Type-Definition_v1-01.dtd"))
         
