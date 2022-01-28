@@ -46,7 +46,9 @@ download_laws <- function(filetype = "xml"){
         dir.create(paste0(dir, "/xml_text"))
         dir.create(paste0(dir, "/xml_attachments"))
 
-
+        ## Download DTD
+        download.file("https://www.gesetze-im-internet.de/dtd/1.01/gii-norm.dtd",
+                      paste0("GII_XML_Document-Type-Definition_v1-01.dtd"))
         
         ## Download XML Files
         download.result.xml <- future.apply::future_lapply(X = links.xml,
