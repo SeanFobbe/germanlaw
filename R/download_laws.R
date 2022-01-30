@@ -52,6 +52,13 @@ download_xml <- function(x,
 
 download_laws <- function(filetype = "xml"){
 
+    ## Start Time
+    begin <- Sys.time()
+    message(paste0("Begin at ", begin, "."))
+
+    ## Define Download Date
+    download.date <- Sys.Date()
+
     ## Extract Links to ZIP Archives from XML Table of Contents
     XML <- xml2::read_xml("https://www.gesetze-im-internet.de/gii-toc.xml")
 
@@ -59,9 +66,7 @@ download_laws <- function(filetype = "xml"){
                                   "link")
 
     links.xml <- xml2::xml_text(links)
-
-    ## Define Download Date
-    download.date <- Sys.Date()
+    
 
     ## Define Name of Target Directory
     dir <- paste0("Gesetze-im-Internet_",
@@ -77,9 +82,6 @@ download_laws <- function(filetype = "xml"){
     ## === XML DOWNLOAD ===
     
     if ((filetype == "all") || (filetype == "xml")){
-
-        ## Store Start Time
-        begin <- Sys.time()
         
         ## Define Folders
         dir.xml <- file.path(dir,
@@ -290,8 +292,10 @@ download_laws <- function(filetype = "xml"){
     
     if ((filetype == "all") || (filetype == "pdf")){
 
+        ## Create PDF Directory
         dir.create(file.path(dir, "pdf"))
 
+        ## Execute Download
         download.result.pdf <- future.apply::future_mapply(utils::download.file,
                                                            url = download$links.pdf,
                                                            destfile = file.path(dir,
@@ -311,8 +315,11 @@ download_laws <- function(filetype = "xml"){
     
     if ((filetype == "all") || (filetype == "epub")){
 
+
+        ## Create EPUB Directory
         dir.create(file.path(dir, "epub"))
 
+        ## Execute Download
         download.result.epub <- future.apply::future_mapply(utils::download.file,
                                                             url = download$links.epub,
                                                             destfile = file.path(dir,
@@ -329,11 +336,20 @@ download_laws <- function(filetype = "xml"){
     }
 
 
-    ## Store End Time
+    ## End Time and Duration
     end <- Sys.time()
+    duration <- end - begin
 
     ## Message Download Duration
     message(paste("Full download completed after", round(end-begin), "seconds."))
+
+        print(paste0("Full download completed after",
+                 round(duration,
+                       digits = 2),
+                 " ",
+                 attributes(duration)$units,
+                 ". Ended at ",
+                 end, "."))
     
 }
 
