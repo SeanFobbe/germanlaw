@@ -181,7 +181,7 @@ download_laws <- function(filetype = "xml"){
                            links.xml)
         
         links.list <- future.apply::future_lapply(links.html,
-                                                  f.linkextract)
+                                                  extract_links)
 
 
         links.raw <- unlist(links.list)
@@ -203,8 +203,8 @@ download_laws <- function(filetype = "xml"){
         ## --- Vektor der Langtitel erstellen
         ## Hinweis: Es gibt zwei Rechtsakte mit dem Namen "Allgemeine Eisenbahngesetz", obwohl es sich um zwei unterschiedliche Rechtsakte handelt. Die beiden Rechtsakte werden daher um ihr jeweiliges Ausfertigungsjahr ergänzt um die Dateinamen einzigartig zu machen.
 
-        longtitle.raw <- html_elements(XML, "title") %>% xml_text()
-
+        longtitle.raw <- rvest::html_elements(XML, "title")
+        longtitle.raw <- rvest::html_text(longtitle.raw)
 
         ## Namen bereinigen und kürzen
 
