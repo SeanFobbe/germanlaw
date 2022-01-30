@@ -291,6 +291,8 @@ download_laws <- function(filetype = "xml"){
     
     if ((filetype == "all") || (filetype == "pdf")){
 
+        dir.create(file.path(dir, "pdf"))
+
         future.apply::future_mapply(utils::download.file,
                                     download$links.pdf,
                                     download$title.pdf)
@@ -301,6 +303,8 @@ download_laws <- function(filetype = "xml"){
     ## === EPUB DOWNLOAD ===
     
     if ((filetype == "all") || (filetype == "epub")){
+
+        dir.create(file.path(dir, "epub"))
 
         future.apply::future_mapply(utils::download.file,
                                     download$links.epub,
