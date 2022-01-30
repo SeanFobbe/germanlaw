@@ -67,6 +67,9 @@ download_laws <- function(filetype = "xml"){
     dir <- paste0("Gesetze-im-Internet_",
                   Sys.Date())
 
+    ## Delete Target Directory from Previous Run
+    unlink(dir)
+
     ## Create Target Directory
     invisible(dir.create(dir))
 
@@ -83,10 +86,6 @@ download_laws <- function(filetype = "xml"){
                              c("xml_zip",
                                "xml_text",
                                "xml_attachments"))
-
-        ## Delete Old Folders from Previous Runs
-        unlink(dir.xml,
-               recursive = TRUE)
 
         ## Create Folders
         invisible(lapply(dir.xml,
