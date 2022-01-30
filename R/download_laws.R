@@ -2,6 +2,37 @@
 
 
 
+
+extract_links <- function(x,
+                          NA.omit = FALSE){
+    
+    links <- tryCatch({
+        
+        html <- xml2::read_html(x)
+        
+        nodes <- rvest::html_elements(html,
+                                      "a")
+        
+        rvest::html_attr(nodes,
+                         'href')},
+        
+        error = function(cond) {
+            
+            return(NA)}
+        
+        )
+
+    if(NA.omit == TRUE){
+
+        links <- links[!is.na(links)]
+            
+    }
+
+    return(links)
+    
+}
+
+
 download_xml <- function(x,
                          dir){
 
@@ -149,8 +180,8 @@ download_laws <- function(filetype = "xml"){
                            "/index.html",
                            links.xml)
         
-        links.list <- future_lapply(links.html,
-                                    f.linkextract)
+        links.list <- future.apply::future_lapply(links.html,
+                                                  f.linkextract)
 
 
         links.raw <- unlist(links.list)
