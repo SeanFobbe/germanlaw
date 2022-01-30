@@ -340,7 +340,10 @@ download_laws <- function(filetype = "xml"){
     end <- Sys.time()
     duration <- end - begin
 
-    ## Message Download Duration
+    ## Message End
+    message(paste0("Ended at ", end, "."))
+
+    ## Message Duration
     message(paste0("Download completed after ",
                    round(duration,
                          digits = 2),
@@ -348,7 +351,7 @@ download_laws <- function(filetype = "xml"){
                    attributes(duration)$units,
                    "."))
             
-    message(paste0("Ended at ", end, "."))
+
     
 }
 
