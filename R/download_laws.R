@@ -251,7 +251,6 @@ download_laws <- function(filetype = "xml"){
 
         ## Add File Extension
 
-        title.xml <- paste0(title, ".zip")
         title.epub <- paste0(title, ".epub")
         title.pdf <- paste0(title, ".pdf")
 
@@ -280,11 +279,11 @@ download_laws <- function(filetype = "xml"){
 
         ## Prepare Data Table for Download
 
-        download <- data.table(title.epub,
-                               links.epub,
-                               title.pdf,
-                               links.pdf)
-
+        download <- data.table::data.table(title.epub,
+                                           links.epub,
+                                           title.pdf,
+                                           links.pdf)
+        
     }
     
 
