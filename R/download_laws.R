@@ -249,7 +249,7 @@ download_laws <- function(filetype = "xml"){
 
 
 
-        ## Dateierweiterungen hinzufügen
+        ## Add File Extension
 
         title.xml <- paste0(title, ".zip")
         title.epub <- paste0(title, ".epub")
@@ -257,7 +257,7 @@ download_laws <- function(filetype = "xml"){
 
 
 
-        ## Links zu EPUB-Dateien erstellen
+        ## Define EPUB Links
 
         prelinks.epub <- gsub("xml.zip",
                               "",
@@ -267,7 +267,7 @@ download_laws <- function(filetype = "xml"){
                              filenames.epub)
 
 
-        ## Links zu  PDF-Dateien erstellen
+        ## Define PDF Links
 
         prelinks.pdf <- gsub("xml.zip",
                              "",
@@ -278,7 +278,7 @@ download_laws <- function(filetype = "xml"){
 
 
 
-        ## Data Table für Download vorbereiten
+        ## Prepare Data Table for Download
 
         download <- data.table(title.epub,
                                links.epub,
