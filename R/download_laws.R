@@ -293,11 +293,17 @@ download_laws <- function(filetype = "xml"){
 
         dir.create(file.path(dir, "pdf"))
 
-        result <- future.apply::future_mapply(utils::download.file,
-                                              url = download$links.pdf,
-                                              destfile = file.path(dir,
-                                                                   "pdf",
-                                                                   download$title.pdf))
+        download.result.pdf <- future.apply::future_mapply(utils::download.file,
+                                                           url = download$links.pdf,
+                                                           destfile = file.path(dir,
+                                                                                "pdf",
+                                                                                download$title.pdf))
+
+        ## Return Download Success
+        message(paste(sum(unlist(download.result.pdf) == 0),
+                      "of",
+                      length(links.xml),
+                      "PDF files successfully downloaded."))
 
     }
 
@@ -308,11 +314,18 @@ download_laws <- function(filetype = "xml"){
 
         dir.create(file.path(dir, "epub"))
 
-        result <- future.apply::future_mapply(utils::download.file,
-                                              url = download$links.epub,
-                                              destfile = file.path(dir,
-                                                                   "epub",
-                                                                   download$title.epub))
+        download.result.epub <- future.apply::future_mapply(utils::download.file,
+                                                            url = download$links.epub,
+                                                            destfile = file.path(dir,
+                                                                                 "epub",
+                                                                                 download$title.epub))
+
+
+        ## Return Download Success
+        message(paste(sum(unlist(download.result.epub) == 0),
+                      "of",
+                      length(links.xml),
+                      "EPUB files successfully downloaded."))
 
     }
 
