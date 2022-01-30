@@ -44,6 +44,9 @@ download_laws <- function(filetype = "xml"){
     
     if ((filetype == "all") || (filetype == "xml")){
 
+        ## Store Start Time
+        begin <- Sys.time()
+        
         ## Define Folders
         dir.xml <- file.path(dir,
                              c("xml_zip",
@@ -139,17 +142,22 @@ download_laws <- function(filetype = "xml"){
     
     if ((filetype == "all") || (filetype == "pdf") || (filetype == "epub")){
 
+
+        ## Extract HTML Links
+
         links.html <- gsub("/xml.zip",
                            "/index.html",
                            links.xml)
-
-        ## Extract HTML Links
+        
         links.list <- future_lapply(links.html,
                                     f.linkextract)
 
 
         links.raw <- unlist(links.list)
 
+
+        ## Define PDF and EPUB Filenames
+        
         filenames.pdf <- grep (".pdf$",
                                links.raw,
                                ignore.case = TRUE,
@@ -282,6 +290,12 @@ download_laws <- function(filetype = "xml"){
 
     }
 
+
+    ## Store End Time
+    end <- Sys.time()
+
+    ## Message Download Duration
+    message(paste("Download completed after", round(end-begin), "seconds."))
     
 }
 
