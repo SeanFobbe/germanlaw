@@ -334,7 +334,7 @@ download_laws <- function(filetype = "xml"){
     end <- Sys.time()
 
     ## Message Download Duration
-    message(paste("Download completed after", round(end-begin), "seconds."))
+    message(paste("Full Download completed after", round(end-begin), "seconds."))
     
 }
 
