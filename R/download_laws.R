@@ -293,11 +293,11 @@ download_laws <- function(filetype = "xml"){
 
         dir.create(file.path(dir, "pdf"))
 
-        future.apply::future_mapply(utils::download.file,
-                                    url = download$links.pdf,
-                                    destfile = file.path(dir,
-                                                         "pdf",
-                                                         download$title.pdf))
+        result <- future.apply::future_mapply(utils::download.file,
+                                              url = download$links.pdf,
+                                              destfile = file.path(dir,
+                                                                   "pdf",
+                                                                   download$title.pdf))
 
     }
 
@@ -308,11 +308,11 @@ download_laws <- function(filetype = "xml"){
 
         dir.create(file.path(dir, "epub"))
 
-        future.apply::future_mapply(utils::download.file,
-                                    url = download$links.epub,
-                                    destfile = file.path(dir,
-                                                         "epub",
-                                                         download$title.epub))
+        result <- future.apply::future_mapply(utils::download.file,
+                                              url = download$links.epub,
+                                              destfile = file.path(dir,
+                                                                   "epub",
+                                                                   download$title.epub))
 
     }
 
