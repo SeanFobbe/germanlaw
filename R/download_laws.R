@@ -232,8 +232,7 @@ download_laws <- function(filetype = "xml"){
 
 
 
-        ## Vektoren der Titel vereinigen
-        ## Die Kurz- und Langtitel werden zu einem Vektor zusammengefügt. Dieser wird dann auf maximal 200 Zeichen gekürzt, damit keine Probleme für Windows-User entstehen. 
+        ## Create Full Title (Short Title + Long Title) and Truncate
 
         title <- paste(shorttitle,
                        longtitle,
@@ -242,16 +241,8 @@ download_laws <- function(filetype = "xml"){
         title <- strtrim(title,
                          200)
 
-
-
-### Prüfung auf Namens-Kollisionen
-        ##  Kollidierende Namen anzeigen. Wenn Namens-Kollisionen bestehen (wie oben beim AEG) müssen diese unbedingt bereinigt werden, weil ansonsten beim Herunterladen eine Datei alle anderen mit dem gleichen Namen überschreibt.
-                                        #
-        title[duplicated(title)]
-
-
-        ## --- Bereinigung von Namens-Kollisionen
-        ## Eine manuelle Bereinigung von Kollisionen ist bevorzugt. Falls keine manuelle Bereinigung stattgefunden hat wird in diesem Schritt eine automatische Bereinigung durchgeführt.
+        
+        ## Make Long Title Unique
 
         title <- make.unique(title,
                              sep = "-")
