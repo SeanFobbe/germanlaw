@@ -218,7 +218,7 @@ download_laws <- function(filetype = "xml"){
                                  "AllgemeinesEisenbahngesetz1951")
 
 
-        ## Vektor der Kurztitel erstellen
+        ## Extract Short Titles
 
         shorttitle <- filenames.pdf
 
