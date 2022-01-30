@@ -200,23 +200,20 @@ download_laws <- function(filetype = "xml"){
                                 value = TRUE)
 
 
-        ## --- Vektor der Langtitel erstellen
-        ## Hinweis: Es gibt zwei Rechtsakte mit dem Namen "Allgemeine Eisenbahngesetz", obwohl es sich um zwei unterschiedliche Rechtsakte handelt. Die beiden Rechtsakte werden daher um ihr jeweiliges Ausfertigungsjahr ergänzt um die Dateinamen einzigartig zu machen.
+        ## Extract Long Titles
 
         longtitle.raw <- rvest::html_elements(XML, "title")
         longtitle.raw <- rvest::html_text(longtitle.raw)
 
-        ## Namen bereinigen und kürzen
+        ## Clean and Shorten Names
 
         longtitle <- gsub(" ", "", longtitle.raw)
         longtitle <- gsub("[[:punct:]]", "", longtitle)
 
 
-        ## Indizes der AEG bestimmen
+        ## Disambiguate "Allgemeines Eisenbahngesetz"
         AEGindex <- grep("AllgemeinesEisenbahngesetz", longtitle)
 
-
-        ## AEGs umbenennen
         longtitle[AEGindex] <- c("AllgemeinesEisenbahngesetz1993",
                                  "AllgemeinesEisenbahngesetz1951")
 
