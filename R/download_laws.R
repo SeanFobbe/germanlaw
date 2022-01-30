@@ -295,7 +295,7 @@ download_laws <- function(filetype = "xml"){
 
         future.apply::future_mapply(utils::download.file,
                                     url = download$links.pdf,
-                                    destfile = download$title.pdf)
+                                    destfile = file.path(dir, "pdf", download$title.pdf))
 
     }
 
@@ -308,7 +308,7 @@ download_laws <- function(filetype = "xml"){
 
         future.apply::future_mapply(utils::download.file,
                                     url = download$links.epub,
-                                    destfile = download$title.epub)
+                                    destfile = file.path(dir, "epub", download$title.epub))
 
     }
 
