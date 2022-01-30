@@ -341,15 +341,14 @@ download_laws <- function(filetype = "xml"){
     duration <- end - begin
 
     ## Message Download Duration
-    message(paste("Full download completed after", round(end-begin), "seconds."))
-
-        print(paste0("Full download completed after",
-                 round(duration,
-                       digits = 2),
-                 " ",
-                 attributes(duration)$units,
-                 ". Ended at ",
-                 end, "."))
+    message(paste0("Download completed after ",
+                   round(duration,
+                         digits = 2),
+                   " ",
+                   attributes(duration)$units,
+                   "."))
+            
+    message(paste0("Ended at ", end, "."))
     
 }
 
