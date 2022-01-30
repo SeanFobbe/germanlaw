@@ -336,14 +336,12 @@ download_laws <- function(filetype = "xml"){
     }
 
 
-    ## End Time and Duration
+    ## End Time
     end <- Sys.time()
-    duration <- end - begin
-
-    ## Message End
     message(paste0("Ended at ", end, "."))
 
-    ## Message Duration
+    ## Duration
+    duration <- end - begin
     message(paste0("Download completed after ",
                    round(duration,
                          digits = 2),
