@@ -1,4 +1,4 @@
-#' Download Current Versions of German Laws and Regulations
+
 
 
 
@@ -32,6 +32,12 @@ extract_links <- function(x,
     
 }
 
+#' Download XML Files from "Gesetze Im Internet"
+#'
+#' This function transforms a link from www.gesetze-im-internet.de to use the name of the law as its filename and downloads it.
+#' 
+#' @param x A URL to a ZIP archive on www.gesetze-im-internet.de
+#' @param dir Target directory for download.
 
 download_xml <- function(x,
                          dir){
@@ -49,6 +55,13 @@ download_xml <- function(x,
 }
 
 
+#' Download Current Versions of German Laws and Regulations
+
+#' Download All Laws from www.gesetze-im-internet.de
+#'
+#' This function downloads all German laws and regulations from the official source www.gesetze-im-internet.de and stores them in separate folders according to file type. Supports download of XML (incl. attachments), PDF and EPUB files.
+#'
+#' @param filetype Character vector. The type of files to be downloaded. Can be "all", "xml", "pdf" or "epub". Defaults to "xml".  
 
 download_laws <- function(filetype = "xml"){
 
