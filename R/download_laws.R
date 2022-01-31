@@ -180,6 +180,9 @@ download_laws <- function(filetype = "xml"){
         links.html <- gsub("/xml.zip",
                            "/index.html",
                            links.xml)
+
+
+        message("Collecting links. This may take a couple of minutes.")
         
         links.list <- future.apply::future_lapply(links.html,
                                                   extract_links)
