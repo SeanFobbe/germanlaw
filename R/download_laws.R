@@ -105,12 +105,6 @@ download_laws <- function(filetype = "xml"){
                                                            dir = dir
                                                            )
 
-        ## Return Download Success
-        message(paste(sum(unlist(download.result.xml) == 0),
-                      "of",
-                      length(links.xml),
-                      "XML files successfully downloaded."))
-
 
         ## Unzip XML
         files.zip <- list.files(dir,
@@ -305,11 +299,7 @@ download_laws <- function(filetype = "xml"){
                                                                                 "pdf",
                                                                                 download$title.pdf))
 
-        ## Return Download Success
-        message(paste(sum(unlist(download.result.pdf) == 0),
-                      "of",
-                      length(links.xml),
-                      "PDF files successfully downloaded."))
+
 
     }
 
@@ -330,13 +320,27 @@ download_laws <- function(filetype = "xml"){
                                                                                  download$title.epub))
 
 
-        ## Return Download Success
-        message(paste(sum(unlist(download.result.epub) == 0),
-                      "of",
-                      length(links.xml),
-                      "EPUB files successfully downloaded."))
+
 
     }
+
+    ## Return Download Success: XML
+    message(paste(sum(unlist(download.result.xml) == 0),
+                  "of",
+                  length(links.xml),
+                  "XML files successfully downloaded."))
+
+    ## Return Download Success: PDF
+    message(paste(sum(unlist(download.result.pdf) == 0),
+                  "of",
+                  length(links.xml),
+                  "PDF files successfully downloaded."))
+
+    ## Return Download Success: EPUB
+    message(paste(sum(unlist(download.result.epub) == 0),
+                  "of",
+                  length(links.xml),
+                  "EPUB files successfully downloaded."))
 
 
     ## End Time
