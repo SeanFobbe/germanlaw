@@ -32,6 +32,9 @@ extract_links <- function(x,
     
 }
 
+
+
+
 #' Download XML Files from "Gesetze Im Internet"
 #'
 #' This function transforms a link from www.gesetze-im-internet.de to use the name of the law as its filename and downloads it.
@@ -53,6 +56,9 @@ download_xml <- function(x,
                          destfile = destination)
     
 }
+
+
+
 
 
 #' Download Current Versions of German Laws and Regulations
