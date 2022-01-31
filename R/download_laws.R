@@ -54,7 +54,6 @@ download_laws <- function(filetype = "xml"){
 
     ## Start Time
     begin <- Sys.time()
-    message(paste0("Begin at ", begin, "."))
 
     ## Define Download Date
     download.date <- Sys.Date()
@@ -342,6 +341,8 @@ download_laws <- function(filetype = "xml"){
                   length(links.xml),
                   "EPUB files successfully downloaded."))
 
+    ## Message Begin
+    message(paste0("Begin at ", begin, "."))
 
     ## End Time
     end <- Sys.time()
