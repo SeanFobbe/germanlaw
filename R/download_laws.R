@@ -59,7 +59,7 @@ download_xml <- function(x,
 
 #' Download All Laws from www.gesetze-im-internet.de
 #'
-#' This function downloads all German laws and regulations from the official source www.gesetze-im-internet.de and stores them in separate folders according to file type. Supports download of XML (incl. attachments), PDF and EPUB files.
+#' This function downloads all German laws and regulations from the official source www.gesetze-im-internet.de and stores them in separate folders according to file type. Supports download of XML (incl. attachments), PDF and EPUB files. Note: PDF and EPUB download are slower than XML download.
 #'
 #' @param filetype Character vector. The type of files to be downloaded. Can be "all", "xml", "pdf" or "epub". Defaults to "xml".  
 
