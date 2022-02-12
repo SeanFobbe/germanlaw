@@ -10,7 +10,7 @@ regex <- paste0("(§|§§|Art\\.|Artikel) *", # Section: Name
                 "[A-Z][a-zA-Z]*(G|B|-?VO|V|gesetz|gesetzes|-?[sS]atzung|-?[vV]erordnung)|gesetzbuch|-[oO]rdnung" # Name of Law
                 )
 
-
+# Ziffern, BUchstaben, Alternativen
 
 testcases <- readLines("law_testcases.txt")
 
