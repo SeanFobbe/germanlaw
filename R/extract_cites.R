@@ -7,7 +7,7 @@ regex <- paste0("(§|§§|Art\\.|Artikel) *", # Section: Name
                 "(([lL]it\\.?|litera) *[a-z, ]+ *)?", # Litera
                 "(des)?(der)?", # Optional Genitiv
                 " *", # Whitespace
-                "[A-Z][a-zA-Z]*(G|B|-?VO|V|gesetz|gesetzes|-?[sS]atzung)" # Name of Law
+                "[A-Z][a-zA-Z]*(G|B|-?VO|V|gesetz|gesetzes|-?[sS]atzung|-?[vV]erordnung)|gesetzbuch" # Name of Law
                 )
 
 
