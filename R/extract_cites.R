@@ -1,3 +1,6 @@
+
+lawnames <- "[A-Z][a-zA-Z]*(G|B|-?VO|V|gesetz|gesetzes|-?[sS]atzung|-?[vV]erordnung)|gesetzbuch|-[oO]rdnung"
+
 regex <- paste0("(§|§§|Art\\.|Artikel) *", # Section: Name
                 "([0-9, \\.]+[a-z]?) *", # Section: Numbering
                 "((Abs\\.?|Absatz|Absätze) *[0-9, ]+ *)?", # Absatz
@@ -7,7 +10,7 @@ regex <- paste0("(§|§§|Art\\.|Artikel) *", # Section: Name
                 "(([lL]it\\.?|litera) *[a-z, ]+ *)?", # Litera
                 "(des)?(der)?", # Optional Genitiv
                 " *", # Whitespace
-                "[A-Z][a-zA-Z]*(G|B|-?VO|V|gesetz|gesetzes|-?[sS]atzung|-?[vV]erordnung)|gesetzbuch|-[oO]rdnung" # Name of Law
+                lawnames
                 )
 
 # Ziffern, BUchstaben, Alternativen
