@@ -1,13 +1,13 @@
 regex <- paste0("(§|§§|Art\\.|Artikel) *", # Section: Name
                 "([0-9, \\.]+[a-z]?) *", # Section: Numbering
-                "((Abs\\.?|Absatz) *[0-9, ]+ *)?", # Absatz
-                "((UAbs\\.?|Unterabsatz) *[0-9, ]+ *)?", # Unterabsatz
-                "((S\\.?|Satz) *[0-9, ]+ *)?", # Satz
-                "((Nr\\.?|Nummer) *[0-9, und]+ *)?", # Nummer
+                "((Abs\\.?|Absatz|Absätze) *[0-9, ]+ *)?", # Absatz
+                "((UAbs\\.?|Unterabsatz|Unterabsätze) *[0-9, ]+ *)?", # Unterabsatz
+                "((S\\.?|Satz|Sätze) *[0-9, ]+ *)?", # Satz
+                "((Nr\\.?|Nummern?) *[0-9, und]+ *)?", # Nummer
                 "(([lL]it\\.?|litera) *[a-z, ]+ *)?", # Litera
                 "(des)?(der)?", # Optional Genitiv
                 " *", # Whitespace
-                "[A-Z][a-zA-Z]*(G|B|-?VO|V|gesetz|gesetzes|-?[sS]atzung|-?[vV]erordnung)|gesetzbuch" # Name of Law
+                "[A-Z][a-zA-Z]*(G|B|-?VO|V|gesetz|gesetzes|-?[sS]atzung|-?[vV]erordnung)|gesetzbuch|-[oO]rdnung" # Name of Law
                 )
 
 
